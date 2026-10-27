@@ -1,0 +1,4 @@
+# Ignore temporary/scratch folders
+scratch/
+*.tmp
+*.log
