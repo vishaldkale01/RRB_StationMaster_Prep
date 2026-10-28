@@ -7,7 +7,7 @@
 
 ## 📅 Phase 1: Foundation (Days 1–7)
 
-- [ ] **Day 1**: Tables 12–15; Squares 1–15; Cancellation; 20 Drills (Target: $\ge$ 16/20 untimed) — *Score:* ___/20
+- [x] **Day 1**: Tables 12–15; Squares 1–15; Cancellation; 20 Drills (Target: $\ge$ 16/20 untimed) — *Score:* **10/20 (Completed 28 Oct 2026)**
 - [ ] **Day 2**: Tables 16–20; Squares 16–25; $\times5/\times25/\times50$ shortcuts (Target: $\ge$ 80% on 30 facts) — *Score:* ___%
 - [ ] **Day 3**: Fraction $\leftrightarrow$ Decimal $\leftrightarrow$ Percentage anchors; Ratio simplification (Target: $\ge$ 85% on 20 cancellations) — *Score:* ___%
 - [ ] **Day 4**: Divisibility rules; LCM & HCF; Division drills (Target: $\ge$ 18/20 decisions) — *Score:* ___/20
@@ -56,9 +56,11 @@
 
 | Date | Topic / Question ID | Error Category | Root Cause & Rule to Prevent Recurrence |
 |:---:|:---|:---:|:---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| 28 Oct | Table 14 ($14 \times 9$) | Calculation Error | Subtracted 18 instead of 14 from 140. Rule: $14 \times 9 = 140 - 14 = 126$. |
+| 28 Oct | Table 16 ($16 \times 7$) | Calculation Error | Table recall slip. Rule: Double $8 \times 7 \rightarrow 56 \times 2 = 112$. |
+| 28 Oct | Table 18 ($18 \times 8$) | Calculation Error | Arithmetic slip. Rule: $20 \times 8 - 16 = 160 - 16 = 144$. |
+| 28 Oct | Table 19 ($19 \times 7$) | Calculation Error | Rule: $20 \times 7 - 7 = 140 - 7 = 133$. |
+| 28 Oct | Square 17 ($17^2$) | Concept Gap | Off by 100. Rule: Anchor $15^2=225, 17^2=289$. |
+| 28 Oct | Square 23 ($23^2$) | Concept Gap | Anchor: between $20^2=400$ and $25^2=625$. $23^2 = 529$. |
+| 28 Oct | Cancellation (Q14, 15, 16) | Concept Gap | Tried multiplying before dividing. Rule: Always cancel numerator and denominator first. |
+| 28 Oct | Percentages (Q20: 75%) | Concept Gap | Fraction anchor: $75\% = 3/4$. Divide by 4, then multiply by 3. |

@@ -48,7 +48,7 @@
 | 19 | 12.5% of 160 = ? | ___ | **20** | $12.5\% = 1/8$ |
 | 20 | 75% of 84 = ? | ___ | **63** | $75\% = 3/4$; $84 \div 4 \times 3$ |
 
-**My score: ___ / 20**
+**My score: 10 / 20 (Day 1 Baseline Completed)**
 
 **Target**: ≥ 16/20 without a timer on first attempt. Once achieved, repeat a reordered version targeting 18/20.
 
