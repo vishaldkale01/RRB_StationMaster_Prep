@@ -71,3 +71,45 @@ These are the exact fractions RRB uses in Profit & Loss and Data Interpretation:
 3. **The 9 and 11 Cross-Mirror:**
    * $\frac{1}{9}$ gives Table of **11** ($11.11\%$)
    * $\frac{1}{11}$ gives Table of **9** ($09.09\%$)
+
+---
+
+## 💡 Real Exam Examples: From 60 Seconds to 5 Seconds
+
+See how knowing these fractions instantly destroys tricky exam questions:
+
+### Example 1: The Evil Decimal ($16.66\%$)
+* **Question:** Find $16.66\%$ of $420$.
+* **Without Chart (Painful):** $420 \times \frac{16.66}{100} = 420 \times 0.1666 \rightarrow$ takes 60 seconds of long multiplication!
+* **With Chart (5 Seconds):** $16.66\% = \frac{1}{6}$.
+  $$\frac{1}{6} \times 420 = \mathbf{70} \quad \text{(Done!)}$$
+
+---
+
+### Example 2: The Profit & Loss Multiple ($37.5\%$)
+* **Question:** An item bought for ₹$640$ is sold at a $37.5\%$ profit. What is the profit amount?
+* **Without Chart:** $640 \times \frac{37.5}{100} \rightarrow$ messy decimal division.
+* **With Chart (5 Seconds):** $37.5\% = \frac{3}{8}$.
+  $$\frac{3}{8} \times 640 = 3 \times 80 = \mathbf{240} \quad \text{(Profit = ₹240)}$$
+
+---
+
+### Example 3: The Train Capacity Question ($83.33\%$)
+* **Question:** In a train carrying $720$ passengers, $83.33\%$ have reserved berths. How many are reserved?
+* **With Chart:** $83.33\% = \frac{5}{6}$.
+  $$\frac{5}{6} \times 720 = 5 \times 120 = \mathbf{600} \text{ passengers} \quad \text{(Done!)}$$
+
+---
+
+### Example 4: The 7-Rule Discount ($14.28\%$)
+* **Question:** A ticket worth ₹$490$ is offered at a $14.28\%$ discount. What is the discount?
+* **With Chart:** $14.28\% = \frac{1}{7}$.
+  $$\frac{1}{7} \times 490 = \mathbf{70} \quad \text{(Discount = ₹70)}$$
+
+---
+
+### Example 5: The Repeating Decimal ($44.44\%$)
+* **Question:** What is $44.44\%$ of $810$?
+* **With Chart:** $11.11\% = \frac{1}{9} \rightarrow 44.44\% = \frac{4}{9}$.
+  $$\frac{4}{9} \times 810 = 4 \times 90 = \mathbf{360} \quad \text{(Done!)}$$
+

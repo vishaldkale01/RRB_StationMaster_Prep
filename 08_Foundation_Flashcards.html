@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RRB Station Master - Foundation Flashcards</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --card-front: #1e293b;
+    --card-back: #0f3f64;
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.3);
+    --success: #22c55e;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    background: rgba(30, 41, 59, 0.7);
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+  }
+
+  .stats-bar span {
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* Flashcard Container */
+  .card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 440px;
+    height: 260px;
+    cursor: pointer;
+    margin-bottom: 24px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .card-container.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-front {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-top: 2px solid var(--accent);
+  }
+
+  .card-back {
+    background: linear-gradient(135deg, #0e3758, #0f172a);
+    border-top: 2px solid var(--success);
+    transform: rotateY(180deg);
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .tag.back-tag {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--success);
+  }
+
+  .question {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin: auto 0;
+  }
+
+  .answer {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #38bdf8;
+    margin-bottom: 6px;
+  }
+
+  .explanation {
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 8px 12px;
+    border-radius: 8px;
+    width: 100%;
+    border-left: 3px solid var(--success);
+  }
+
+  .hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  button {
+    background: #334155;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  button:hover {
+    background: #475569;
+    border-color: var(--accent);
+  }
+
+  button.primary {
+    background: var(--accent);
+    color: #0f172a;
+    border-color: var(--accent);
+  }
+
+  button.primary:hover {
+    background: #7dd3fc;
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+
+  button.mark-btn {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: var(--success);
+    color: #86efac;
+  }
+
+  button.mark-btn:hover {
+    background: var(--success);
+    color: #0f172a;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tab {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .tab.active {
+    background: #38bdf8;
+    color: #0f172a;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🚂 Foundation Flashcard Deck</h1>
+  <p>Tap card to flip • Master the shortcuts before testing!</p>
+</div>
+
+<div class="filter-tabs">
+  <div class="tab active" onclick="filterCards('all')">All (29)</div>
+  <div class="tab" onclick="filterCards('table')">Tables</div>
+  <div class="tab" onclick="filterCards('square')">Base-400 Squares</div>
+  <div class="tab" onclick="filterCards('multiplier')">Magic Multipliers</div>
+  <div class="tab" onclick="filterCards('fraction')">Fractions & Cancellation</div>
+  <div class="tab" onclick="filterCards('numbers')">Prime, Odd & Co-Prime</div>
+</div>
+
+<div class="stats-bar">
+  <div>Card: <span id="current-index">1</span>/<span id="total-cards">29</span></div>
+  <div>Mastered: <span id="mastered-count">0</span></div>
+</div>
+
+<div class="card-container" id="flashcard" onclick="flipCard()">
+  <div class="card-inner">
+    <div class="card-face card-front">
+      <div class="tag" id="card-tag">Table Shortcut</div>
+      <div class="question" id="card-question">19 × 7</div>
+      <div class="hint">👉 Tap to reveal trick & answer</div>
+    </div>
+    <div class="card-face card-back">
+      <div class="tag back-tag">The Fast Method</div>
+      <div class="answer" id="card-answer">133</div>
+      <div class="explanation" id="card-explanation">Pivot from 20: (20 × 7) - 7 = 140 - 7 = 133</div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button onclick="prevCard()">← Prev</button>
+  <button class="primary" onclick="flipCard()">Flip 🔄</button>
+  <button onclick="nextCard()">Next →</button>
+</div>
+
+<div class="controls">
+  <button class="mark-btn" onclick="toggleMastered()">⭐ Mark as Mastered</button>
+  <button onclick="shuffleCards()">🔀 Shuffle</button>
+</div>
+
+<script>
+const allDeck = [
+  // Tables
+  { cat: 'table', tag: 'Table 19', q: '19 × 7', a: '133', exp: 'Subtract rule: (20 × 7) - 7 = 140 - 7 = 133' },
+  { cat: 'table', tag: 'Table 18', q: '18 × 8', a: '144', exp: 'Subtract double: (20 × 8) - 16 = 160 - 16 = 144' },
+  { cat: 'table', tag: 'Table 14', q: '14 × 9', a: '126', exp: 'Minus 14: (14 × 10) - 14 = 140 - 14 = 126' },
+  { cat: 'table', tag: 'Table 16', q: '16 × 7', a: '112', exp: 'Double table of 8: (8 × 7 = 56) → double it = 112' },
+  { cat: 'table', tag: 'Table 17', q: '17 × 6', a: '102', exp: 'Subtract from 120: (20 × 6) - 18 = 120 - 18 = 102' },
+
+  // Squares
+  { cat: 'square', tag: 'Base 400 (+1)', q: '21²', a: '441', exp: 'Pivot of 400: 400 + 40(1) + 1² = 441' },
+  { cat: 'square', tag: 'Base 400 (+2)', q: '22²', a: '484', exp: 'Pivot of 400: 400 + 80(2) + 2² = 484' },
+  { cat: 'square', tag: 'Base 400 (+3)', q: '23²', a: '529', exp: 'Pivot of 400: 400 + 120(3) + 3² = 529' },
+  { cat: 'square', tag: 'Base 400 (+4)', q: '24²', a: '576', exp: 'Pivot of 400: 400 + 160(4) + 4² = 576' },
+  { cat: 'square', tag: 'Base 400 (-3)', q: '17²', a: '289', exp: 'Pivot of 400: 400 - 120 + 3² = 280 + 9 = 289' },
+  { cat: 'square', tag: 'Ending in 5', q: '45²', a: '2025', exp: 'Multiply by next digit: 4 × 5 = 20, append 25 → 2025' },
+
+  // Magic Multipliers
+  { cat: 'multiplier', tag: 'Multiply by 5', q: '68 × 5', a: '340', exp: 'Half of 68 is 34 → append 0 → 340' },
+  { cat: 'multiplier', tag: 'Multiply by 50', q: '42 × 50', a: '2100', exp: 'Half of 42 is 21 → append 00 → 2100' },
+  { cat: 'multiplier', tag: 'Multiply by 25', q: '28 × 25', a: '700', exp: 'Divide by 4: 28 ÷ 4 = 7 → append 00 → 700' },
+  { cat: 'multiplier', tag: 'Multiply by 25', q: '36 × 25', a: '900', exp: 'Divide by 4: 36 ÷ 4 = 9 → append 00 → 900' },
+
+  // Fractions & Ratios
+  { cat: 'fraction', tag: 'Fraction Anchor', q: '16.66% of 180', a: '30', exp: '16.66% = 1/6 → 180 ÷ 6 = 30' },
+  { cat: 'fraction', tag: 'Fraction Anchor', q: '37.5% of 400', a: '150', exp: '37.5% = 3/8 → (400 ÷ 8) × 3 = 50 × 3 = 150' },
+  { cat: 'fraction', tag: 'Fraction Anchor', q: '75% of 84', a: '63', exp: '75% = 3/4 → (84 ÷ 4) × 3 = 21 × 3 = 63' },
+  { cat: 'fraction', tag: 'Ratio Simplification', q: 'Simplify 48 / 72', a: '2 : 3', exp: 'Divide by 24 (or divide by 8 then 3) → 2 / 3' },
+  { cat: 'fraction', tag: 'Cancellation Rule', q: '(24 × 35) / (6 × 7)', a: '20', exp: 'Cancel pairs: (24÷6 = 4) and (35÷7 = 5) → 4 × 5 = 20' },
+  { cat: 'fraction', tag: 'Friendly Split (÷7)', q: '500 ÷ 7', a: '71.43', exp: 'Split into friendly multiple: (490 + 10) ÷ 7 = 70 + (10 ÷ 7) = 70 + 1.43 = 71.43' },
+  { cat: 'multiplier', tag: 'Fast Division (÷8)', q: '140 ÷ 8', a: '17.5', exp: 'Halve 3 times: 140 → 70 → 35 → 17.5' },
+
+  // Prime, Odd & Co-Prime
+  { cat: 'numbers', tag: 'Odd Definition', q: 'What is the foolproof definition of an Odd number?', a: 'Leaves remainder 1 when divided by 2', exp: 'Even numbers divide cleanly by 2 (remainder 0). Odd numbers always leave remainder 1 when divided by 2.' },
+  { cat: 'numbers', tag: 'Prime Definition', q: 'What is a Prime number?', a: 'Has EXACTLY two factors: 1 and itself', exp: 'Cannot be broken into smaller integer products. Examples: 2, 3, 5, 7, 11, 13, 17, 19, 23...' },
+  { cat: 'numbers', tag: 'Exam Trap: Number 1', q: 'Is 1 an Odd number or a Prime number?', a: 'Odd, but NOT Prime!', exp: '1 has only ONE factor (itself). Prime requires EXACTLY TWO distinct factors. 1 is neither prime nor composite.' },
+  { cat: 'numbers', tag: 'Exam Fact: Number 2', q: 'Why is the number 2 unique in mathematics?', a: 'It is the ONLY Even Prime number', exp: 'All other even numbers (4, 6, 8...) are divisible by 2, so they cannot be prime. 2 is also the smallest prime.' },
+  { cat: 'numbers', tag: 'Odd vs Prime Trap', q: 'Are all Odd numbers Prime? Give a counter-example.', a: 'NO! (e.g., 9, 15, 21, 25, 27)', exp: '9 is odd (remainder 1), but NOT prime because 3 × 3 = 9. Prime is a strictly smaller elite club.' },
+  { cat: 'numbers', tag: 'Co-Prime Concept', q: 'Can 8 and 9 be Co-Prime even if neither is prime?', a: 'YES! (HCF = 1)', exp: 'Co-prime is a PAIR relationship. 8 and 9 share NO common factor except 1. The fraction 8/9 cannot be reduced further.' },
+  { cat: 'numbers', tag: 'Co-Prime Rule', q: 'Can two Even numbers ever be Co-Prime?', a: 'NEVER!', exp: 'Any two even numbers share 2 as a common divisor. Therefore their HCF is at least 2, never 1.' }
+];
+
+let deck = [...allDeck];
+let currentIndex = 0;
+let mastered = new Set();
+
+function updateCard() {
+  const card = deck[currentIndex];
+  document.getElementById('card-tag').textContent = card.tag;
+  document.getElementById('card-question').textContent = card.q;
+  document.getElementById('card-answer').textContent = card.a;
+  document.getElementById('card-explanation').textContent = card.exp;
+  document.getElementById('current-index').textContent = currentIndex + 1;
+  document.getElementById('total-cards').textContent = deck.length;
+  
+  // Reset flip
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+
+function flipCard() {
+  document.getElementById('flashcard').classList.toggle('flipped');
+}
+
+function nextCard() {
+  currentIndex = (currentIndex + 1) % deck.length;
+  updateCard();
+}
+
+function prevCard() {
+  currentIndex = (currentIndex - 1 + deck.length) % deck.length;
+  updateCard();
+}
+
+function shuffleCards() {
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  currentIndex = 0;
+  updateCard();
+}
+
+function toggleMastered() {
+  const currentCard = deck[currentIndex];
+  if (mastered.has(currentCard.q)) {
+    mastered.delete(currentCard.q);
+  } else {
+    mastered.add(currentCard.q);
+  }
+  document.getElementById('mastered-count').textContent = mastered.size;
+  nextCard();
+}
+
+function filterCards(category) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if (category === 'all') {
+    deck = [...allDeck];
+  } else {
+    deck = allDeck.filter(c => c.cat === category);
+  }
+  currentIndex = 0;
+  updateCard();
+}
+
+// Init
+updateCard();
+</script>
+
+</body>
+</html>

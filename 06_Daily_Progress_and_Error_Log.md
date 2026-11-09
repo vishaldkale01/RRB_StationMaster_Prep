@@ -8,9 +8,9 @@
 ## 📅 Phase 1: Foundation (Days 1–7)
 
 - [x] **Day 1**: Tables 12–15; Squares 1–15; Cancellation; 20 Drills (Target: $\ge$ 16/20 untimed) — *Score:* **10/20 (Completed 28 Oct 2026)**
-- [ ] **Day 2**: Tables 16–20; Squares 16–25; $\times5/\times25/\times50$ shortcuts (Target: $\ge$ 80% on 30 facts) — *Score:* ___%
-- [ ] **Day 3**: Fraction $\leftrightarrow$ Decimal $\leftrightarrow$ Percentage anchors; Ratio simplification (Target: $\ge$ 85% on 20 cancellations) — *Score:* ___%
-- [ ] **Day 4**: Divisibility rules; LCM & HCF; Division drills (Target: $\ge$ 18/20 decisions) — *Score:* ___/20
+- [x] **Day 2**: Tables 16–20; Base-400 Squares 16–25; $\times5/\times25/\times50$ shortcuts (Target: $\ge$ 80% on 30 facts) — *Score:* **100% Retained & Mastered (10 Nov 2026)**
+- [x] **Day 3**: Fraction $\leftrightarrow$ Decimal $\leftrightarrow$ Percentage anchors; Ratio cancellation; Prime, Odd & Co-Prime classification (Target: $\ge$ 85% on 20 cancellations) — *Score:* **100% Mastered (10 Nov 2026)**
+- [ ] **Day 4**: Divisibility rules ($2, 3, 4, 5, 6, 8, 9, 11$); Rapid LCM & HCF; Division drills (Target: $\ge$ 18/20 decisions) — *Score:* ___/20
 - [ ] **Day 5**: BODMAS; Powers & Roots; Option Elimination (Target: $\ge$ 85% on 25 questions) — *Score:* ___%
 - [ ] **Day 6**: Fast Percentages, Ratios & Averages set (Target: $\ge$ 80%) — *Score:* ___%
 - [ ] **Day 7**: **Foundation Test (40Q / 45 min)** (Target: $\ge$ 80%, table recall $\le$ 5s) — *Score:* ___/40
@@ -64,3 +64,7 @@
 | 28 Oct | Square 23 ($23^2$) | Concept Gap | Anchor: between $20^2=400$ and $25^2=625$. $23^2 = 529$. |
 | 28 Oct | Cancellation (Q14, 15, 16) | Concept Gap | Tried multiplying before dividing. Rule: Always cancel numerator and denominator first. |
 | 28 Oct | Percentages (Q20: 75%) | Concept Gap | Fraction anchor: $75\% = 3/4$. Divide by 4, then multiply by 3. |
+| 10 Nov | Table 14 ($14 \times 9$) | Calculation Error | Subtracted 9 instead of 14 ($140-9=131$). Rule: 10 baskets of 14 has one extra basket of 14, so subtract 14 $\rightarrow 140 - 14 = 126$. |
+| 10 Nov | Multi-step cancel $\frac{14 \times 30}{7}$ | Misread | Misread 30 as 36 ($2 \times 36 = 72$). Rule: Double-check operand digits before multiplying. |
+| 10 Nov | Decimal Division ($140 \div 8$) | Calculation Error | Wrote 175 omitting decimal point. Rule: Halve 3 times: $140 \rightarrow 70 \rightarrow 35 \rightarrow 17.5$. Sanity check magnitude! |
+| 10 Nov | Co-Prime Numbers (8 and 9) | Concept Gap | Thought 8 cannot be co-prime because 2 divides 8. Rule: Co-prime is a PAIR property ($HCF=1$; fraction cannot be simplified), not an individual property. |
